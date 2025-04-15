@@ -4,9 +4,9 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("Задание 1");
-        Scanner clientOSScan = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Введите, какая у вас операционная система (0 — iOS, 1 — Android): ");
-        byte clientOS = clientOSScan.nextByte();
+        byte clientOS = scanner.nextByte();
         if (clientOS == 1) {
             System.out.println("Установите версию приложения для Android по ссылке.");
         } else if (clientOS == 0) {
@@ -16,27 +16,27 @@ public class Main {
         }
 
         System.out.println("Задание 2");
-        Scanner clientDeviceYearScan = new Scanner(System.in);
+        scanner = new Scanner(System.in);
         System.out.println("Введите год выпуска вашей модели: ");
-        short clientDeviceYear = clientDeviceYearScan.nextShort();
-        boolean android = clientOS == 1;
-        boolean iOS = clientOS == 0;
-        if (clientDeviceYear < 2015) {
-            if (android) {
+        short clientDeviceYear = scanner.nextShort();
+        if (clientDeviceYear < 2015 && clientOS <= 1 && clientOS >= 0) {
+            if (clientOS == 1) {
                 System.out.println("Установите облегченную версию приложения для Android по ссылке.");
-            } else if (iOS) {
+            } else {
                 System.out.println("Установите облегченную версию приложения для iOS по ссылке.");
             }
-        } else if (android) {
+        } else if (clientOS == 1) {
             System.out.println("Установите версию приложения для Android по ссылке.");
-        } else if (iOS) {
+        } else if (clientOS == 0) {
             System.out.println("Установите версию приложения для iOS по ссылке.");
+        } else {
+            System.out.println("Не определена операционная система.");
         }
 
         System.out.println("Задание 3");
-        Scanner yearScan = new Scanner(System.in);
+        scanner = new Scanner(System.in);
         System.out.println("Введите год: ");
-        int year = yearScan.nextInt();
+        int year = scanner.nextInt();
         if (year > 1584) {
             if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
                 System.out.println(year + " год является високосным.");
